@@ -18,16 +18,18 @@ public class playerscript : MonoBehaviour
     private Transform tr;
 
     // player movement
-    public Camera camera;
+    public Camera cameraObj;
     private CharacterController controller;
-
-    //public Transform follow;
-    //public Vector3 follow_offset = new Vector3();
 
     // foraging
     private bool isNearForage = false;
     private bool foraging = false;
-    private float pull = 0;
+    private int pull = 0;
+    private int pullGoal = 20;
+
+    //inventory system
+    public static int invSize = 4;
+    public string[] inventory = new string[invSize];
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -36,10 +38,7 @@ public class playerscript : MonoBehaviour
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
         tr = GetComponent<Transform>();
-
         controller = GetComponent<CharacterController>();
-
-        //follow_offset = tr.position - follow.position;
 
     }
 
@@ -51,10 +50,9 @@ public class playerscript : MonoBehaviour
         Vector3 move = new Vector3(h, 0f, v).normalized;
 
 
-
         // get camera forward/right directions
-        Vector3 camForward = camera.transform.forward;
-        Vector3 camRight = camera.transform.right;
+        Vector3 camForward = cameraObj.transform.forward;
+        Vector3 camRight = cameraObj.transform.right;
 
         camForward.y = 0;
         camRight.y = 0;
@@ -64,22 +62,16 @@ public class playerscript : MonoBehaviour
         // move relative to camera direction
         Vector3 moveDir = (camForward * v + camRight * h).normalized;
 
-        //follow.rotation = Quaternion.LookRotation(moveDir, tr.up);
-
         if (move.magnitude >= 0.1f)
         {
             anim.SetBool("walking", true);
             tr.rotation = Quaternion.LookRotation(moveDir, Vector3.up);
-
-            // move player using CharacterController
             controller.Move(moveDir * speed * Time.deltaTime);
-            //follow.position += moveDir * speed * Time.deltaTime;
         }
         else
         {
             anim.SetBool("walking", false);
         }
-
 
         if (isNearForage)
         {
@@ -92,12 +84,12 @@ public class playerscript : MonoBehaviour
 
         if (foraging)
         {
-            if (UnityEngine.Input.GetKeyDown(KeyCode.F) && pull < 10)
+            if (UnityEngine.Input.GetKeyDown(KeyCode.F) && pull < pullGoal)
             {
                 pull += 2;
                 Debug.Log("pull :" + pull);
             }
-            else if (pull == 10)
+            else if (pull == pullGoal)
             {
                 Debug.Log("pulled");
                 pull = 0;
@@ -113,14 +105,17 @@ public class playerscript : MonoBehaviour
         if (collider.gameObject.tag == "forage")
         {
             isNearForage = true;
+            Debug.Log(collider.gameObject.name);
 
         }
     }
 
     private void OnTriggerStay(Collider collider)
     {
-        if (collider.gameObject.tag == "forage" && pull == 10)
+        if (collider.gameObject.tag == "forage" && pull == pullGoal)
         {
+            updateInv(collider.gameObject.name);
+            Debug.Log(collider.gameObject.name);
             Destroy(collider.gameObject);
         }
     }
@@ -143,6 +138,39 @@ public class playerscript : MonoBehaviour
 
     }
 
+
+    private void updateInv(string name)
+    {
+        string cutName = name;
+        if (name.EndsWith((')')) ){
+            cutName = name.Remove(name.Length - 4);
+        }
+
+        string itemName = "";
+        switch (name)
+        {
+            case "red flower cluster":
+                itemName = "red flower";
+                break;
+            default:
+                break;
+        }
+
+        if (!(inventory[inventory.Length - 1].Equals("") || inventory[inventory.Length - 1].Equals(null)))
+        {
+            Debug.Log("inventory full");
+            return;
+        }
+        for (int i = 0; i < inventory.Length;  i++)
+        {
+            if (inventory[i].Equals("") || inventory[i].Equals(null))
+            {
+                inventory[i] = itemName;
+                Debug.Log(inventory);
+                return;
+            }
+        }
+    }
     IEnumerator forage()
     {
         Debug.Log("foraging");
