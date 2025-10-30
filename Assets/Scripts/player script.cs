@@ -17,21 +17,19 @@ public class playerscript : MonoBehaviour
     private Rigidbody rb;
     private Transform tr;
 
+    // player movement
     public Camera camera;
-
     private CharacterController controller;
 
-    public Transform follow;
-    public Vector3 follow_offset = new Vector3();
+    //public Transform follow;
+    //public Vector3 follow_offset = new Vector3();
 
-
+    // foraging
     private bool isNearForage = false;
     private bool foraging = false;
-
     private float pull = 0;
 
 
-    private Vector3 movement;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -41,7 +39,7 @@ public class playerscript : MonoBehaviour
 
         controller = GetComponent<CharacterController>();
 
-        follow_offset = tr.position - follow.position;
+        //follow_offset = tr.position - follow.position;
 
     }
 
@@ -66,25 +64,16 @@ public class playerscript : MonoBehaviour
         // move relative to camera direction
         Vector3 moveDir = (camForward * v + camRight * h).normalized;
 
-        follow.rotation = Quaternion.LookRotation(moveDir, tr.up);
+        //follow.rotation = Quaternion.LookRotation(moveDir, tr.up);
 
         if (move.magnitude >= 0.1f)
         {
             anim.SetBool("walking", true);
-
-            // rotate player for a,s,d
-            //tr.rotation = Quaternion.LookRotation(move, Vector3.up);
-
-            //controller.Move(move * speed * Time.deltaTime);
-            //follow.position = tr.position - follow_offset;
-
-
             tr.rotation = Quaternion.LookRotation(moveDir, Vector3.up);
 
             // move player using CharacterController
             controller.Move(moveDir * speed * Time.deltaTime);
-            follow.position += moveDir * speed * Time.deltaTime;
-
+            //follow.position += moveDir * speed * Time.deltaTime;
         }
         else
         {
