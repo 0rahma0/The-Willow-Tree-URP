@@ -5,6 +5,7 @@ using TMPro;
 using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Animations;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using UnityEngine.Windows;
@@ -16,9 +17,9 @@ public class playerscript : MonoBehaviour
     private Rigidbody rb;
     private Transform tr;
 
-    public Transform cameraTransform;
+    public Camera camera;
+
     private CharacterController controller;
-    // public Text forageText;
 
     public Transform follow;
     public Vector3 follow_offset = new Vector3();
@@ -28,6 +29,7 @@ public class playerscript : MonoBehaviour
     private bool foraging = false;
 
     private float pull = 0;
+
 
     private Vector3 movement;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -39,7 +41,7 @@ public class playerscript : MonoBehaviour
 
         controller = GetComponent<CharacterController>();
 
-        //follow_offset = tr.position - follow.position;
+        follow_offset = tr.position - follow.position;
 
     }
 
@@ -50,34 +52,45 @@ public class playerscript : MonoBehaviour
         float v = UnityEngine.Input.GetAxis("Vertical");
         Vector3 move = new Vector3(h, 0f, v).normalized;
 
-        //Vector3 MousePos = Input.mousePosition;
-        //Vector3 playerLook = Camera.main.ScreenToWorldPoint(new Vector3(MousePos.x, 0, MousePos.z));
+
+
+        // get camera forward/right directions
+        Vector3 camForward = camera.transform.forward;
+        Vector3 camRight = camera.transform.right;
+
+        camForward.y = 0;
+        camRight.y = 0;
+        camForward.Normalize();
+        camRight.Normalize();
+
+        // move relative to camera direction
+        Vector3 moveDir = (camForward * v + camRight * h).normalized;
+
+        follow.rotation = Quaternion.LookRotation(moveDir, tr.up);
 
         if (move.magnitude >= 0.1f)
         {
             anim.SetBool("walking", true);
 
-            //Vector3 followPos = 
-            //    new Vector3(transform.position.x - follow_offset.x,
-            //                follow.position.y,
-            //                transform.position.z - follow_offset.z);
-            //follow.position = Vector3.Lerp(follow.position, followPos, speed * Time.deltaTime);
+            // rotate player for a,s,d
+            //tr.rotation = Quaternion.LookRotation(move, Vector3.up);
 
-            // calculate movement relative to camera
-            float targetAngle = Mathf.Atan2(move.x, move.z) * Mathf.Rad2Deg + cameraTransform.eulerAngles.y;
-            Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+            //controller.Move(move * speed * Time.deltaTime);
+            //follow.position = tr.position - follow_offset;
 
-            // rotate character toward moveDir
-            transform.rotation = Quaternion.Euler(0f, targetAngle, 0f);
 
-            // move
+            tr.rotation = Quaternion.LookRotation(moveDir, Vector3.up);
+
+            // move player using CharacterController
             controller.Move(moveDir * speed * Time.deltaTime);
+            follow.position += moveDir * speed * Time.deltaTime;
 
         }
         else
         {
             anim.SetBool("walking", false);
         }
+
 
         if (isNearForage)
         {
@@ -117,7 +130,7 @@ public class playerscript : MonoBehaviour
 
     private void OnTriggerStay(Collider collider)
     {
-        if(collider.gameObject.tag == "forage" && pull == 10)
+        if (collider.gameObject.tag == "forage" && pull == 10)
         {
             Destroy(collider.gameObject);
         }
@@ -138,7 +151,7 @@ public class playerscript : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
-       
+
     }
 
     IEnumerator forage()
@@ -151,7 +164,7 @@ public class playerscript : MonoBehaviour
 
     IEnumerator start_forage()
     {
-         Debug.Log("starting foraging");
+        Debug.Log("starting foraging");
         anim.SetBool("startForage", true);
         yield return new WaitForSeconds(anim.GetCurrentAnimatorClipInfo(0).Length);
         anim.SetBool("startForage", false);
@@ -164,6 +177,13 @@ public class playerscript : MonoBehaviour
         anim.SetBool("finishForage", true);
         yield return new WaitForSeconds(anim.GetCurrentAnimatorClipInfo(0).Length);
         anim.SetBool("finishForage", false);
+    }
+
+    public Vector3 MousePosition()
+    {
+        Vector3 mousePos = UnityEngine.Input.mousePosition;
+        mousePos.z = 10f; // distance from camera
+        return Camera.main.ScreenToWorldPoint(mousePos);
     }
 
 
