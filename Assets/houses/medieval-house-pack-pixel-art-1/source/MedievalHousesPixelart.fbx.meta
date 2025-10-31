@@ -1,9 +1,19 @@
 fileFormatVersion: 2
-guid: b22a899f972c1f048b13a17ddf15f495
+guid: 1348723af870ea4438bcd97b085d6e14
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Sheet1
+    second: {fileID: 2100000, guid: a24c7cb2159597e45975f8a07b7db56d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Smoke
+    second: {fileID: 2100000, guid: cf742700d32f2c04299bfe626434f36e, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
