@@ -31,6 +31,9 @@ public class playerscript : MonoBehaviour
     public static int invSize = 4;
     public string[] inventory = new string[invSize];
 
+    // healing
+    // public bool canHeal = false;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -98,6 +101,7 @@ public class playerscript : MonoBehaviour
                 foraging = false;
             }
         }
+
     }
 
     private void OnTriggerEnter(Collider collider)
@@ -118,6 +122,12 @@ public class playerscript : MonoBehaviour
             Debug.Log(collider.gameObject.name);
             Destroy(collider.gameObject);
         }
+
+        //if (collider.gameObject.tag == "goop" && UnityEngine.Input.GetKeyDown(KeyCode.E))
+        //{
+        //    StartCoroutine(heal());
+        //}
+
     }
 
     private void OnTriggerExit(Collider collider)
@@ -196,12 +206,19 @@ public class playerscript : MonoBehaviour
         anim.SetBool("finishForage", false);
     }
 
-    public Vector3 MousePosition()
+    IEnumerator heal()
     {
-        Vector3 mousePos = UnityEngine.Input.mousePosition;
-        mousePos.z = 10f; // distance from camera
-        return Camera.main.ScreenToWorldPoint(mousePos);
+        anim.SetBool("healing", true);
+        yield return new WaitForSeconds(2);
+        anim.SetBool("healing", false);
     }
+
+    //public Vector3 MousePosition()
+    //{
+    //    Vector3 mousePos = UnityEngine.Input.mousePosition;
+    //    mousePos.z = 10f; // distance from camera
+    //    return Camera.main.ScreenToWorldPoint(mousePos);
+    //}
 
 
 }

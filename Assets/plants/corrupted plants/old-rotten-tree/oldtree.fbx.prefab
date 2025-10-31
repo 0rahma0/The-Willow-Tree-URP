@@ -22,15 +22,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 21deb7780ac958e4491a4d3507c0e311, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 22.522694
+      value: -318.39203
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 21deb7780ac958e4491a4d3507c0e311, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.1267519
+      value: -1.1409035
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 21deb7780ac958e4491a4d3507c0e311, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 178.6622
+      value: -210.716
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 21deb7780ac958e4491a4d3507c0e311, type: 3}
       propertyPath: m_LocalRotation.w
@@ -38,7 +38,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 21deb7780ac958e4491a4d3507c0e311, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 21deb7780ac958e4491a4d3507c0e311, type: 3}
       propertyPath: m_LocalRotation.y
@@ -46,7 +46,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 21deb7780ac958e4491a4d3507c0e311, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 21deb7780ac958e4491a4d3507c0e311, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -64,9 +64,25 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7922371269471838263, guid: 21deb7780ac958e4491a4d3507c0e311, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 21deb7780ac958e4491a4d3507c0e311, type: 3}
       propertyPath: m_Name
       value: oldtree.fbx
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 21deb7780ac958e4491a4d3507c0e311, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 2456388107175698481, guid: 21deb7780ac958e4491a4d3507c0e311, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 5944215007942280078, guid: 21deb7780ac958e4491a4d3507c0e311, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
