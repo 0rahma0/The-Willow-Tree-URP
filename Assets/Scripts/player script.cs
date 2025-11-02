@@ -28,8 +28,12 @@ public class playerscript : MonoBehaviour
     private int pullGoal = 20;
 
     //inventory system
-    public static int invSize = 4;
-    public string[] inventory = new string[invSize];
+    public static int basketize = 4;
+    public static string[] basketInv = new string[basketize];
+
+    public static string[] pocketInv = new string[5];
+
+    public string selectedItem = "";
 
     // healing
     // public bool canHeal = false;
@@ -64,6 +68,31 @@ public class playerscript : MonoBehaviour
 
         // move relative to camera direction
         Vector3 moveDir = (camForward * v + camRight * h).normalized;
+
+        if (UnityEngine.Input.GetKeyDown(KeyCode.Alpha1)){
+            selectedItem = pocketInv[0];
+            Debug.Log("holding "+ selectedItem);
+        }
+        if (UnityEngine.Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            selectedItem = pocketInv[1];
+            Debug.Log("holding " + selectedItem);
+        }
+        if (UnityEngine.Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            selectedItem = pocketInv[2];
+            Debug.Log("holding " + selectedItem);
+        }
+        if (UnityEngine.Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            selectedItem = pocketInv[3];
+            Debug.Log("holding " + selectedItem);
+        }
+        if (UnityEngine.Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            selectedItem = pocketInv[4];
+            Debug.Log("holding " + selectedItem);
+        }
 
         if (move.magnitude >= 0.1f)
         {
@@ -166,28 +195,28 @@ public class playerscript : MonoBehaviour
                 break;
         }
 
-        if (!(inventory[inventory.Length - 1].Equals("") || inventory[inventory.Length - 1].Equals(null)))
+        if (!(basketInv[basketInv.Length - 1].Equals("") || basketInv[basketInv.Length - 1].Equals(null)))
         {
             Debug.Log("inventory full");
             return;
         }
-        for (int i = 0; i < inventory.Length;  i++)
+        for (int i = 0; i < basketInv.Length;  i++)
         {
-            if (inventory[i].Equals("") || inventory[i].Equals(null))
+            if (basketInv[i].Equals("") || basketInv[i].Equals(null))
             {
-                inventory[i] = itemName;
-                Debug.Log(inventory);
+                basketInv[i] = itemName;
+                Debug.Log(basketInv);
                 return;
             }
         }
     }
-    IEnumerator forage()
-    {
-        Debug.Log("foraging");
-        anim.SetBool("foraging", true);
-        yield return new WaitForSeconds(3);
-        anim.SetBool("foraging", false);
-    }
+    //IEnumerator forage()
+    //{
+    //    Debug.Log("foraging");
+    //    anim.SetBool("foraging", true);
+    //    yield return new WaitForSeconds(3);
+    //    anim.SetBool("foraging", false);
+    //}
 
     IEnumerator start_forage()
     {
@@ -206,12 +235,12 @@ public class playerscript : MonoBehaviour
         anim.SetBool("finishForage", false);
     }
 
-    IEnumerator heal()
-    {
-        anim.SetBool("healing", true);
-        yield return new WaitForSeconds(2);
-        anim.SetBool("healing", false);
-    }
+    //IEnumerator heal()
+    //{
+    //    anim.SetBool("healing", true);
+    //    yield return new WaitForSeconds(2);
+    //    anim.SetBool("healing", false);
+    //}
 
     //public Vector3 MousePosition()
     //{
