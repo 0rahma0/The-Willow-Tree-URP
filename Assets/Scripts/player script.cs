@@ -31,9 +31,9 @@ public class playerscript : MonoBehaviour
     public static int basketize = 4;
     public static string[] basketInv = new string[basketize];
 
-    public static string[] pocketInv = new string[5];
+    public static GameObject[] pocketInv = new GameObject[5];
 
-    public string selectedItem = "";
+    public GameObject selectedItem ;
 
     // healing
     // public bool canHeal = false;
@@ -235,19 +235,18 @@ public class playerscript : MonoBehaviour
         anim.SetBool("finishForage", false);
     }
 
-    //IEnumerator heal()
-    //{
-    //    anim.SetBool("healing", true);
-    //    yield return new WaitForSeconds(2);
-    //    anim.SetBool("healing", false);
-    //}
-
-    //public Vector3 MousePosition()
-    //{
-    //    Vector3 mousePos = UnityEngine.Input.mousePosition;
-    //    mousePos.z = 10f; // distance from camera
-    //    return Camera.main.ScreenToWorldPoint(mousePos);
-    //}
+    public static void addToInv(GameObject thing)
+    {
+        for(int i = 0;i < pocketInv.Length; i++)
+        {
+            if (pocketInv[i] == null)
+            {
+                pocketInv[i] = thing;
+                Debug.Log(pocketInv[i].name);
+                return;
+            }
+        }
+    }
 
 
 }

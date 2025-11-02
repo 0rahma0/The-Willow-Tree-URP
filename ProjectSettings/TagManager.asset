@@ -6,6 +6,9 @@ TagManager:
   tags:
   - forage
   - goop
+  - CinemachineTarget
+  - scales
+  - grind
   layers:
   - Default
   - TransparentFX

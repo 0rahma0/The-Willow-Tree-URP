@@ -2,20 +2,22 @@ using UnityEngine;
 
 public class first_person_rotation : MonoBehaviour
 {
-    private Transform tr;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public Camera cam;
+    public float moveSpeed = 10f;
+    public Transform tr;
+
+    private void Start()
     {
-     tr = gameObject.GetComponent<Transform>();   
+        tr= GetComponent<Transform>();  
     }
 
-    // Update is called once per frame
     void Update()
     {
-        Vector3 mousePos = UnityEngine.Input.mousePosition;
-        Vector3 mouseDir = Camera.main.ScreenToWorldPoint(mousePos).normalized;
-        tr.rotation = Quaternion.LookRotation(mouseDir);
-    }
+        Vector3 mousePos = Input.mousePosition;
+        mousePos.z = Mathf.Abs(cam.transform.position.z - transform.position.z);
 
-    
+        Vector3 worldPos = cam.ScreenToWorldPoint(mousePos);
+
+        transform.position = Vector3.Lerp(transform.position, worldPos, moveSpeed * Time.deltaTime);
+    }
 }
