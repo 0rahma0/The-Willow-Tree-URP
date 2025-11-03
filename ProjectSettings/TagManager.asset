@@ -9,6 +9,9 @@ TagManager:
   - CinemachineTarget
   - scales
   - grind
+  - plantPaper
+  - potions
+  - remedy
   layers:
   - Default
   - TransparentFX

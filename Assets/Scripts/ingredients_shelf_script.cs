@@ -23,6 +23,10 @@ public class ingredients_shelf_script : MonoBehaviour
         {
             if ((quantities[i] == 0) && inventory[i] != null)
             {
+                //inventory[i].transform.position = 
+                //            new Vector3(inventory[i].transform.position.x + 10,
+                //                        inventory[i].transform.position.y,
+                //                        inventory[i].transform.position.z);
                 inventory[i].SetActive(false);
             }
         }
@@ -30,14 +34,18 @@ public class ingredients_shelf_script : MonoBehaviour
 
     public static void updateCount(GameObject plant)
     {
-        for(int i = 0; i < inventory.Length; i++)
+        playerscript.addToInv(plant);
+        for (int i = 0; i < inventory.Length; i++)
         {
-            if(plant.name == inventory[i].name)
+            if (inventory[i] != null)
             {
-                quantities[i] -= 1;
-                break;
+                if (plant.name == inventory[i].name)
+                {
+                    quantities[i] -= 1;
+                    break;
+                }
             }
         }  
-        playerscript.addToInv(plant);
+        
     }
 }

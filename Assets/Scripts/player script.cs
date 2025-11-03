@@ -33,7 +33,7 @@ public class playerscript : MonoBehaviour
 
     public static GameObject[] pocketInv = new GameObject[5];
 
-    public GameObject selectedItem ;
+    public static GameObject selectedItem ;
 
     // healing
     // public bool canHeal = false;
@@ -242,7 +242,7 @@ public class playerscript : MonoBehaviour
             if (pocketInv[i] == null)
             {
                 pocketInv[i] = thing;
-                Debug.Log(pocketInv[i].name);
+                Debug.Log("selected : "+ i + pocketInv[i].name);
                 return;
             }
         }
