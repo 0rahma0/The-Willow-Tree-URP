@@ -5,7 +5,7 @@ public class cameraswitchscript : MonoBehaviour
 {
     public CinemachineCamera firstPersonCam;
     public CinemachineCamera thirdPersonCam;
-    private bool isFirstPerson = true;
+    private bool isFirstPerson = false;
     void Start()
     {
         // Start with first person camera active

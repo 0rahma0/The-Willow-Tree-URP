@@ -124,10 +124,10 @@ public class playerscript : MonoBehaviour
             else if (pull == pullGoal)
             {
                 Debug.Log("pulled");
-                pull = 0;
                 anim.SetBool("foraging", false);
                 StartCoroutine(end_forage());
                 foraging = false;
+              
             }
         }
 
@@ -147,9 +147,13 @@ public class playerscript : MonoBehaviour
     {
         if (collider.gameObject.tag == "forage" && pull == pullGoal)
         {
-            updateInv(collider.gameObject.name);
+            //updateInv(collider.gameObject.name);
             Debug.Log(collider.gameObject.name);
+
+            pull = 0;
             Destroy(collider.gameObject);
+
+            
         }
 
         //if (collider.gameObject.tag == "goop" && UnityEngine.Input.GetKeyDown(KeyCode.E))
@@ -195,20 +199,20 @@ public class playerscript : MonoBehaviour
                 break;
         }
 
-        if (!(basketInv[basketInv.Length - 1].Equals("") || basketInv[basketInv.Length - 1].Equals(null)))
-        {
-            Debug.Log("inventory full");
-            return;
-        }
-        for (int i = 0; i < basketInv.Length;  i++)
-        {
-            if (basketInv[i].Equals("") || basketInv[i].Equals(null))
-            {
-                basketInv[i] = itemName;
-                Debug.Log(basketInv);
-                return;
-            }
-        }
+        //if (!(basketInv[basketInv.Length - 1].Equals("") || basketInv[basketInv.Length - 1].Equals(null)))
+        //{
+        //    Debug.Log("inventory full");
+        //    return;
+        //}
+        //for (int i = 0; i < basketInv.Length;  i++)
+        //{
+        //    if (basketInv[i].Equals("") || basketInv[i].Equals(null))
+        //    {
+        //        basketInv[i] = itemName;
+        //        Debug.Log(basketInv);
+        //        return;
+        //    }
+        //}
     }
     //IEnumerator forage()
     //{
