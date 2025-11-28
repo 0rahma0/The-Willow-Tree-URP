@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class foragableplantscript : MonoBehaviour
 {
-    public Text forage;
+    public RawImage forage;
     public bool textenabled;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

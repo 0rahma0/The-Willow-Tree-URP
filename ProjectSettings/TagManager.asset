@@ -12,6 +12,7 @@ TagManager:
   - plantPaper
   - potions
   - remedy
+  - forest_to_lab
   layers:
   - Default
   - TransparentFX
