@@ -13,6 +13,8 @@ TagManager:
   - potions
   - remedy
   - forest_to_lab
+  - lab_to_village
+  - lab_to_forest
   layers:
   - Default
   - TransparentFX

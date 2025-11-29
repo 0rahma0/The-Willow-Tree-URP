@@ -8,6 +8,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/outside lab.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/forest with river.unity
+    guid: 8e5c54a01764df746a812b5ba49bf335
+  - enabled: 1
+    path: Assets/Scenes/corrupted forest.unity
+    guid: 673b552131514a84bbbf6ecc8509b123
+  - enabled: 1
+    path: Assets/Scenes/lab scene.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/village.unity
+    guid: 642d649c422db7f4abdf111217ad1b18
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
