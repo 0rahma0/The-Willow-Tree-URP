@@ -15,17 +15,26 @@ public class basket_script : MonoBehaviour
     // basket upgrade shop 
     public Button  upgrade1;
     public Button upgrade2;
-    public Button upgrade3;
 
     // sold out
-    public TextMeshPro soldOut1;
-    public TextMeshPro soldOut2;
-    public TextMeshPro soldOut3;
+    public TextMeshProUGUI soldOut1;
+    public TextMeshProUGUI soldOut2;
+
+    // basket rows
+    public Image[] row2;
+    public Image[] row3;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
-        
+        upgrade1.image.color = new Color32(0xF5, 0xDE, 0xB3, 0xFF); // first upgrade possible
+        upgrade2.image.color = new Color32(0xB4, 0x98, 0x72, 0xFF); // 2nd upgrade locked
+        // 2nd adn 3rd basket rows disabled
+        for(int i = 0; i< 4; i++)
+        {
+            row2[i].color = new Color32(0xB4, 0x98, 0x72, 0xFF);
+            row3[i].color = new Color32(0xB4, 0x98, 0x72, 0xFF);
+        }
+
     }
 
     // Update is called once per frame
@@ -37,17 +46,30 @@ public class basket_script : MonoBehaviour
             case 0:
                 soldOut1.enabled = false;
                 soldOut2.enabled = false;
-                soldOut3.enabled = false;
                 break;
             case 1:
                 soldOut1.enabled = true;
                 soldOut2.enabled = false;
-                soldOut3.enabled = false;
+                // first sold out 2nd enabled
+                upgrade1.image.color = new Color32(0xB4, 0x98, 0x72, 0xFF);
+                upgrade2.image.color = new Color32(0xF5, 0xDE, 0xB3, 0xFF);
+                // 2nd row enabled
+                for (int i = 0; i < 4; i++)
+                {
+                    row2[i].color = new Color32(0xF5, 0xDE, 0xB3, 0xFF);
+                }
                 break;
             case 2:
                 soldOut1.enabled = true;
                 soldOut2.enabled = true;
-                soldOut3.enabled = true;
+                // both sold out
+                upgrade1.image.color = new Color32(0xB4, 0x98, 0x72, 0xFF);
+                upgrade2.image.color = new Color32(0xB4, 0x98, 0x72, 0xFF);
+                // 3rd row enabled
+                for (int i = 0; i < 4; i++)
+                {
+                    row3[i].color = new Color32(0xF5, 0xDE, 0xB3, 0xFF);
+                }
                 break;
             default:
                 break;
@@ -56,32 +78,8 @@ public class basket_script : MonoBehaviour
 
     public void upgradeBasket()
     {
-        switch (upgrades)
-        {
-            case 0:
-                // check required items are in basket
-
-                // change button colors to lock old and unlock new
-                upgrade1.image.color = new Color32(0xB4, 0x98, 0x72, 0xFF);
-                upgrade2.image.color = new Color32(0xF5, 0xDE, 0xB3, 0xFF);
-                
-                
-                break;
-            case 1:
-                // repeat as first upgrade
-                upgrade2.image.color = new Color32(0xB4, 0x98, 0x72, 0xFF);
-                upgrade3.image.color = new Color32(0xF5, 0xDE, 0xB3, 0xFF);
-                break;
-            case 2:
-                // repeat as second upgrade
-                upgrade3.image.color = new Color32(0xB4, 0x98, 0x72, 0xFF);
-                break;
-            default:
-                return;
-        }
-
         // increase size and upgrade times
-        basketize += 5;
+        basketize += 4;
         upgrades++;
     }
 }
