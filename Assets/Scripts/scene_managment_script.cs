@@ -87,6 +87,7 @@ public class scene_managment_script : MonoBehaviour
                 break;
             case "lab_to_forest":
                 //SceneManager.LoadScene("forest with river");
+
                 // to be used by dialogue manager
                 if (!first_normal_forest_entry)
                     first_normal_forest_entry = true;
@@ -102,6 +103,7 @@ public class scene_managment_script : MonoBehaviour
                 StartCoroutine(loadScene("outside lab"));
                 break;
             case "village_to_forest":
+
                 // to be used by dialogue manager
                 if (!first_corrupted_forest_entry)
                     first_corrupted_forest_entry = true;

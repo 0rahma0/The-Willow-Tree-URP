@@ -83,6 +83,7 @@ public class MouseRaycastDetect : MonoBehaviour
         }
     }
 
+    // play animations for scaling and grinding
     IEnumerator playScaleAnim()
     {
         scaleAnim.SetBool("scaling",true);

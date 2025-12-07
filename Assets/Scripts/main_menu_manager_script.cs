@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class main_menu_manager_script : MonoBehaviour
 {
+    // nmenu , controls, and loading screen
     public Canvas loadingScreen;
     private Canvas menu;
     public Canvas controls;
@@ -24,7 +25,7 @@ public class main_menu_manager_script : MonoBehaviour
     {
         StartCoroutine(loadStart());
     }
-
+    // to attatch to start button to start game
     IEnumerator loadStart()
     {
         loadingScreen.enabled=true;
@@ -33,16 +34,18 @@ public class main_menu_manager_script : MonoBehaviour
         SceneManager.LoadScene("village");
         loadingScreen.enabled=false;
     }
-
+    // to attach to controls button to show controls
     public void showControls()
     {
         controls.enabled = true;
     }
-
+    // to attach to back button in control cnavas to go back to menu
     public void hideControls()
     {
         controls.enabled = false;
     }
+
+    // to attartch to quit button to quit game
     public void Quit()
     {
         Application.Quit();
