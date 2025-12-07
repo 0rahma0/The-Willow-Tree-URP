@@ -11,14 +11,19 @@ public class objective_manager_script : MonoBehaviour
     private string obj1 = "collect 2 unique plants";
     bool collectedRed,collectedPurple = false;
     int collected = 0;
+
     private string obj2 = "heal orange goop";
     public static int healed = 0;
+
     private string obj3 = "explore further ";
     public static bool explored = false;
-    private string obj4 = "get through thorns wall";
-    public bool cleared = false;
 
-    public static int currObj = 0 ; //becomes 1 when objectives start
+    private string obj4 = "get through thorns wall";
+    public static bool cleared = false;
+
+    private string obj5 = "head deeper into the forest";
+
+    public static int currObj = 4 ; //becomes 1 when objectives start
 
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -85,8 +90,12 @@ public class objective_manager_script : MonoBehaviour
         }
 
         if (currObj == 4) 
-        { 
-
+        {
+            if (cleared) {
+                currObj = 5;
+                objective.text = "objective : \n" + obj5;
+                
+            }
         }
 
         

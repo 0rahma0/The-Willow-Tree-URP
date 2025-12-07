@@ -1,3 +1,4 @@
+using GLTFast.Schema;
 using System;
 using System.Collections;
 using Unity.Mathematics;
@@ -18,7 +19,7 @@ public class playerscript : MonoBehaviour
     private Transform tr;
 
     // player movement
-    public Camera cameraObj;
+    public UnityEngine.Camera cameraObj;
     private CharacterController controller;
 
     // gravity for character controller
@@ -85,6 +86,7 @@ public class playerscript : MonoBehaviour
         velocity.y += gravity*-1 * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
 
+        // movement
         if (move.magnitude >= 0.1f)
         {
             anim.SetBool("walking", true);
@@ -96,7 +98,7 @@ public class playerscript : MonoBehaviour
             anim.SetBool("walking", false);
         }
 
-
+        // selecting inventory items
         if (UnityEngine.Input.GetKeyDown(KeyCode.Alpha1)){
             selectedItem = pocketInv[0];
             selectedIndex = 0;
@@ -126,40 +128,23 @@ public class playerscript : MonoBehaviour
             selectedIndex = 4;
             Debug.Log("holding " + selectedItem);
         }
-
-
-        
+   
 
     }
 
+    //-------Prepared collisin and triggers in case of use---------------
     private void OnTriggerEnter(Collider collider)
     {
-        //if (collider.gameObject.tag == "forage")
-        //{
-        //    isNearForage = true;
-        //    Debug.Log(collider.gameObject.name);
-
-        //}
+        
     }
 
     private void OnTriggerStay(Collider collider)
     {
-        //if (collider.gameObject.tag == "forage" && pull == pullGoal)
-        //{
-        //    //updateInv(collider.gameObject.name);
-        //    Debug.Log(collider.gameObject.name);
-
-        //    pull = 0;
-        //    Destroy(collider.gameObject);
-
-            
-        //}
-
-        //if (collider.gameObject.tag == "goop" && UnityEngine.Input.GetKeyDown(KeyCode.E))
-        //{
-        //    StartCoroutine(heal());
-        //}
-
+        // if  interaced with wall destroy wall
+        if (collider.gameObject.tag == "thorn_wall" && UnityEngine.Input.GetKeyDown(KeyCode.E))
+        {
+            StartCoroutine(healWall(collider.gameObject));
+        }
     }
 
     private void OnTriggerExit(Collider collider)
@@ -180,28 +165,19 @@ public class playerscript : MonoBehaviour
 
     }
 
-
-    private void updateInv(string name)
+    // play healing animation for 2 seconds then destory
+    IEnumerator healWall(GameObject thorns)
     {
-        string cutName = name;
-        if (name.EndsWith((')')) ){
-            cutName = name.Remove(name.Length - 4);
-        }
-
-        string itemName = "";
-        switch (name)
-        {
-            case "red flower cluster":
-                itemName = "red flower";
-                break;
-            default:
-                break;
-        }
-
-        
+        anim.SetBool("healing", true);
+        yield return new WaitForSeconds(3);
+        anim.SetBool("healing", false);
+        // to move on to next objective
+        objective_manager_script.cleared = true;
+        Destroy(thorns);
     }
 
 
+    // -------Inventory handling----------
     public static void addToInv(GameObject thing)
     {
         for(int i = 0;i < pocketInv.Length; i++)

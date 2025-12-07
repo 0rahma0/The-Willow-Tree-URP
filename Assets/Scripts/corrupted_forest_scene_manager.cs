@@ -8,6 +8,7 @@ public class corrupted_forest_scene_manager : MonoBehaviour
     public bool nearThorns;
     public static bool first_time = true;
 
+
     public Transform tr;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -49,6 +50,19 @@ public class corrupted_forest_scene_manager : MonoBehaviour
         {
             dialogue_box.enabled = false;
             scene_managment_script.first_corrupted_forest_entry = false;
+        }
+
+        if (objective_manager_script.cleared )
+        {
+            dialogue_box.enabled = true;
+            text.text = "now i can head deepr in";
+        }
+
+        if (objective_manager_script.cleared && Input.GetKey(KeyCode.Space))
+        {
+            dialogue_box.enabled = false;
+            objective_manager_script.cleared = false;
+
         }
 
 

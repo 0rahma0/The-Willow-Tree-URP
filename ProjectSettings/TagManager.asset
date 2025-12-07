@@ -18,6 +18,7 @@ TagManager:
   - village_to_lab
   - village_to_forest
   - forest_to_village
+  - thorn_wall
   layers:
   - Default
   - TransparentFX
