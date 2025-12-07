@@ -7,7 +7,9 @@ public class Foragingscript : MonoBehaviour
     private bool isNearForage = false;
     private bool foraging = false;
     private int pull = 0;
-    private int pullGoal = 20;
+    private int pullGoal = 8;
+
+    public static string[] foraged_plants = new string[100];
 
     //player anim
     private Animator anim;
@@ -43,7 +45,7 @@ public class Foragingscript : MonoBehaviour
                 anim.SetBool("foraging", false);
                 StartCoroutine(end_forage());
                 foraging = false;
-
+                
             }
         }
 
@@ -66,9 +68,26 @@ public class Foragingscript : MonoBehaviour
             //updateInv(collider.gameObject.name);
             Debug.Log(collider.gameObject.name);
 
+            string cutName = "";
+
+            if (collider.gameObject.name.EndsWith((")")))
+            {
+                cutName = collider.gameObject.name.Substring(0, collider.gameObject.name.Length - 4);
+                Debug.Log(cutName);
+            }
+
             pull = 0;
             Destroy(collider.gameObject);
 
+            for (int i = 0; i < foraged_plants.Length; i++)
+            {
+                if (foraged_plants[i] == null)
+                {
+                    foraged_plants[i] = cutName;
+                    Debug.Log(foraged_plants[i]);
+                    break;
+                }
+            }
 
         }
 

@@ -6,7 +6,9 @@ using UnityEngine;
 using UnityEngine.Animations;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 using UnityEngine.Windows;
+//using Image = UnityEngine.UI.Image;
 
 public class playerscript : MonoBehaviour
 {
@@ -26,6 +28,19 @@ public class playerscript : MonoBehaviour
     //inventory
     public static GameObject[] pocketInv = new GameObject[5];
     public static GameObject selectedItem ;
+    public static int selectedIndex ;
+
+    //inventory items
+    public UnityEngine.UI.Image[] items_inspector;
+    public static UnityEngine.UI.Image[] items;
+    // plant images
+    public  Sprite red_flower_image_ins;
+    public  Sprite purple_flower_image_ins;
+    public  Sprite mushroom_image_ins;
+
+    public static Sprite red_flower_image;
+    public static Sprite purple_flower_image;
+    public static Sprite mushroom_image;
 
     // healing
     // public bool canHeal = false;
@@ -40,6 +55,10 @@ public class playerscript : MonoBehaviour
         tr = GetComponent<Transform>();
         controller = GetComponent<CharacterController>();
 
+        items = items_inspector;
+        red_flower_image = red_flower_image_ins;
+        purple_flower_image= purple_flower_image_ins;
+        mushroom_image = mushroom_image_ins;
     }
 
     // Update is called once per frame
@@ -80,26 +99,31 @@ public class playerscript : MonoBehaviour
 
         if (UnityEngine.Input.GetKeyDown(KeyCode.Alpha1)){
             selectedItem = pocketInv[0];
+            selectedIndex = 0;
             Debug.Log("holding "+ selectedItem);
         }
         if (UnityEngine.Input.GetKeyDown(KeyCode.Alpha2))
         {
             selectedItem = pocketInv[1];
+            selectedIndex = 1;
             Debug.Log("holding " + selectedItem);
         }
         if (UnityEngine.Input.GetKeyDown(KeyCode.Alpha3))
         {
             selectedItem = pocketInv[2];
+            selectedIndex = 2;
             Debug.Log("holding " + selectedItem);
         }
         if (UnityEngine.Input.GetKeyDown(KeyCode.Alpha4))
         {
             selectedItem = pocketInv[3];
+            selectedIndex = 3;
             Debug.Log("holding " + selectedItem);
         }
         if (UnityEngine.Input.GetKeyDown(KeyCode.Alpha5))
         {
             selectedItem = pocketInv[4];
+            selectedIndex = 4;
             Debug.Log("holding " + selectedItem);
         }
 
@@ -176,8 +200,6 @@ public class playerscript : MonoBehaviour
 
         
     }
-   
-
 
 
     public static void addToInv(GameObject thing)
@@ -187,9 +209,35 @@ public class playerscript : MonoBehaviour
             if (pocketInv[i] == null)
             {
                 pocketInv[i] = thing;
+                updateInvImage(thing, i);
                 Debug.Log("selected : "+ i + pocketInv[i].name);
                 return;
             }
+        }
+    }
+
+    public static void updateInvImage(GameObject thing, int i)
+    {
+        Debug.Log("updating image for slot "+i+"for itme"+ thing.gameObject.name);
+        switch (thing.gameObject.name)
+        {
+            case "":
+                break;
+            case "red flower cluster":
+                items[i].enabled = true;
+                items[i].sprite = red_flower_image;
+                break;
+            case "purple flower culster":
+                items[i].enabled = true;
+                items[i].sprite = purple_flower_image;
+                break;
+            case "TallMush2":
+                items[i].enabled = true;
+                items[i].sprite = mushroom_image;
+                break;
+            default:
+                break;
+
         }
     }
 

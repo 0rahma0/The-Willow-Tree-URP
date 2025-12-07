@@ -67,12 +67,16 @@ public class MouseRaycastDetect : MonoBehaviour
                     // spawn selected item from inventory on palnt paper to use as ingredient
                     GameObject tmp = playerscript.selectedItem;
                     GameObject obj = Instantiate(tmp, new Vector3(-6.8f, 1.56f, -6.4f), Quaternion.identity);
+                        
                     obj.SetActive(true);
                     obj.GetComponent<BoxCollider>().enabled = false;
                     // scale down item when on paper (original scale is too big)
                     obj.transform.localScale = new Vector3(tmp.transform.localScale.x / 2,
                                                            tmp.transform.localScale.y / 2,
                                                            tmp.transform.localScale.z / 2);
+                    playerscript.items[playerscript.selectedIndex].sprite = null;
+                    playerscript.items[playerscript.selectedIndex].enabled = false;
+                    //playerscript.items[playerscript.selectedIndex] = null;
                 }
             }
         }

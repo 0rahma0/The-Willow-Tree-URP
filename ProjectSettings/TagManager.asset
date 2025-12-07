@@ -15,6 +15,9 @@ TagManager:
   - forest_to_lab
   - lab_to_village
   - lab_to_forest
+  - village_to_lab
+  - village_to_forest
+  - forest_to_village
   layers:
   - Default
   - TransparentFX

@@ -22,15 +22,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0c88868d9fa691f41b19c84553ecaddb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 181.1006
+      value: -25.260788
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0c88868d9fa691f41b19c84553ecaddb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.1800575
+      value: -0.26994705
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0c88868d9fa691f41b19c84553ecaddb, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 116.411575
+      value: 135.82008
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0c88868d9fa691f41b19c84553ecaddb, type: 3}
       propertyPath: m_LocalRotation.w
@@ -107,8 +107,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 9.285957, y: 7.5506763, z: 5.56372}
-  m_Center: {x: -0.9076805, y: -0.45371583, z: 1.0045205}
+  m_Size: {x: 10.785957, y: 10.050677, z: 5.56372}
+  m_Center: {x: -0.6576805, y: -0.20371605, z: 1.0045251}
 --- !u!114 &4183668746981566476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116,7 +116,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5447197152177536350}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9e8dbf3b095850746819003bc5867abe, type: 3}
   m_Name: 

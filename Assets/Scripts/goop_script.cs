@@ -5,12 +5,17 @@ public class goop_script : MonoBehaviour
 {
     public Material badMaterial;
     public Material goodMaterial;
+    public static Material material;
+    //public static bool healed;
 
-    private Animator anim;
+    public Animator anim;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        anim = GetComponent<Animator>();
+        //anim = GetComponent<Animator>();
+        material = GetComponent<MeshRenderer>().material;
+
+        gameObject.GetComponent<MeshRenderer>().material = material;
     }
 
     // Update is called once per frame
@@ -21,11 +26,11 @@ public class goop_script : MonoBehaviour
 
     private void OnTriggerStay(Collider collider)
     {
-        if (collider.gameObject.tag == "goop")
+        if (collider.gameObject.tag == "Player")
         {
             //Debug.Log("collison registered");
 
-            if( UnityEngine.Input.GetKeyDown(KeyCode.E)){
+            if( Input.GetKeyDown(KeyCode.E)){
                 StartCoroutine(heal( collider.gameObject));
                 
             }
@@ -40,6 +45,11 @@ public class goop_script : MonoBehaviour
         anim.SetBool("healing", true);
         yield return new WaitForSeconds(2);
         anim.SetBool("healing", false);
-        goop.GetComponent<MeshRenderer>().material = goodMaterial;
+        material = goodMaterial;
+        gameObject.GetComponent <MeshRenderer>().material = goodMaterial;
+        if(objective_manager_script.healed < 3)
+        {
+            objective_manager_script.healed++;
+        }
     }
 }
