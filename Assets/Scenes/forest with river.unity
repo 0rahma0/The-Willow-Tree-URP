@@ -3825,7 +3825,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e14546f9f705f8a41bb79bc35cebd5e1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3
+      value: 2.2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e14546f9f705f8a41bb79bc35cebd5e1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -12536,23 +12536,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6638498077001867511, guid: 1ac6c81046c9fbd46b0f652a74b94cc7, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6638498077001867511, guid: 1ac6c81046c9fbd46b0f652a74b94cc7, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6638498077001867511, guid: 1ac6c81046c9fbd46b0f652a74b94cc7, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6638498077001867511, guid: 1ac6c81046c9fbd46b0f652a74b94cc7, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: -30.855
       objectReference: {fileID: 0}
     - target: {fileID: 6638498077001867511, guid: 1ac6c81046c9fbd46b0f652a74b94cc7, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -0.189
       objectReference: {fileID: 0}
     - target: {fileID: 6638498077001867511, guid: 1ac6c81046c9fbd46b0f652a74b94cc7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -17880,8 +17880,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.1475509, y: 0.022723062, z: 0.031127367}
-  m_Center: {x: 0.06377544, y: 6.6223155e-10, z: -0.003078287}
+  m_Size: {x: 0.1475509, y: 0.022723062, z: 0.015011583}
+  m_Center: {x: 0.06377544, y: 0.000000024324775, z: -0.011136183}
 --- !u!64 &599499738
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -43330,8 +43330,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1917525068670487695, guid: 69b4b1e2a02578c42b5566d7ed994948, type: 3}
-      propertyPath: m_text
-      value: 
+      propertyPath: m_fontSize
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1917525068670487695, guid: 69b4b1e2a02578c42b5566d7ed994948, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 4177918779066093846, guid: 69b4b1e2a02578c42b5566d7ed994948, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 320.27063
+      objectReference: {fileID: 0}
+    - target: {fileID: 4177918779066093846, guid: 69b4b1e2a02578c42b5566d7ed994948, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -82.27478
       objectReference: {fileID: 0}
     - target: {fileID: 6946393672228965392, guid: 69b4b1e2a02578c42b5566d7ed994948, type: 3}
       propertyPath: m_LocalPosition.x

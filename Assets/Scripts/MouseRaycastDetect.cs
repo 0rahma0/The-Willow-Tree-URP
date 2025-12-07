@@ -74,6 +74,7 @@ public class MouseRaycastDetect : MonoBehaviour
                     obj.transform.localScale = new Vector3(tmp.transform.localScale.x / 2,
                                                            tmp.transform.localScale.y / 2,
                                                            tmp.transform.localScale.z / 2);
+              
                     playerscript.items[playerscript.selectedIndex].sprite = null;
                     playerscript.items[playerscript.selectedIndex].enabled = false;
                     //playerscript.items[playerscript.selectedIndex] = null;

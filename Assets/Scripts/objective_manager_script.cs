@@ -23,7 +23,7 @@ public class objective_manager_script : MonoBehaviour
 
     private string obj5 = "head deeper into the forest";
 
-    public static int currObj = 4 ; //becomes 1 when objectives start
+    public static int currObj = 0 ; //becomes 1 when objectives start
 
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created

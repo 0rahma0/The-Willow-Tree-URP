@@ -128,7 +128,13 @@ public class scene_managment_script : MonoBehaviour
         {
             lab_to_outside = true;
             SceneManager.LoadScene("outside lab");
-            
+
+        }
+
+        if (collider.gameObject.tag == "lab_to_forest" && Input.GetKeyDown(KeyCode.E))
+        {
+            lab_to_outside = true;
+            SceneManager.LoadScene("outside lab");
 
         }
     }

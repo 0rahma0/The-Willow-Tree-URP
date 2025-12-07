@@ -3282,7 +3282,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6642264721039130599, guid: 257c969c0931cdd4386f3e30cc9b1001, type: 3}
       propertyPath: m_TagString
-      value: lab_to_forest
+      value: wall_to_lab
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

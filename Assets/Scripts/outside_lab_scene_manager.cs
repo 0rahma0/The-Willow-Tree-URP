@@ -32,8 +32,9 @@ public class outside_lab_scene_manager : MonoBehaviour
 
     private void OnTriggerStay(Collider collision)
     {
-        if (Input.GetKeyDown(KeyCode.E)&& collision.tag == "Player")
+        if (collision.tag == "Player" && Input.GetKeyDown(KeyCode.E))
         {
+            Debug.Log("switching to lab scene");
             SceneManager.LoadScene("lab scene");
         }
     }

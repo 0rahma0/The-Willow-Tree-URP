@@ -8,6 +8,8 @@ public class corrupted_forest_scene_manager : MonoBehaviour
     public bool nearThorns;
     public static bool first_time = true;
 
+    public static bool first_entry = true;
+
 
     public Transform tr;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -39,7 +41,7 @@ public class corrupted_forest_scene_manager : MonoBehaviour
             first_time = false;
         }
 
-        if (scene_managment_script.first_corrupted_forest_entry)
+        if (scene_managment_script.first_corrupted_forest_entry && first_entry)
         {
             dialogue_box.enabled = true;
             text.text = "wow..this looks awful..and..interesting.";
@@ -49,6 +51,7 @@ public class corrupted_forest_scene_manager : MonoBehaviour
         if (scene_managment_script.first_corrupted_forest_entry && Input.GetKey(KeyCode.Space))
         {
             dialogue_box.enabled = false;
+            first_entry = false;
             scene_managment_script.first_corrupted_forest_entry = false;
         }
 

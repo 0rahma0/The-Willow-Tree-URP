@@ -7,7 +7,6 @@ public class lab_exit_script : MonoBehaviour
 {
     public TextMeshProUGUI text;
 
-    public MonoScript outside_script;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
