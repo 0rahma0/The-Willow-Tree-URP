@@ -43207,6 +43207,10 @@ PrefabInstance:
       propertyPath: m_fontColor32.rgba
       value: 4294835709
       objectReference: {fileID: 0}
+    - target: {fileID: 2097206550962724483, guid: 69b4b1e2a02578c42b5566d7ed994948, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6946393672228965392, guid: 69b4b1e2a02578c42b5566d7ed994948, type: 3}
       propertyPath: m_LocalPosition.x
       value: 213.8

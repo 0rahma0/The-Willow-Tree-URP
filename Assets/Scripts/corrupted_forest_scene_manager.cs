@@ -25,7 +25,7 @@ public class corrupted_forest_scene_manager : MonoBehaviour
             nearThorns = true;
         }
 
-        if (nearThorns && first_time)
+        if (nearThorns && first_time && objective_manager_script.currObj == 3)
         {
             dialogue_box.enabled = true;
             objective_manager_script.explored = true;

@@ -9,7 +9,7 @@ public class Foragingscript : MonoBehaviour
     private int pull = 0;
     private int pullGoal = 8;
 
-    public static string[] foraged_plants = new string[100];
+    public static string[] foraged_plants = new string[10];
 
     //player anim
     private Animator anim;
@@ -84,7 +84,7 @@ public class Foragingscript : MonoBehaviour
                 if (foraged_plants[i] == null)
                 {
                     foraged_plants[i] = cutName;
-                    Debug.Log(foraged_plants[i]);
+                    Debug.Log("foraged "+foraged_plants[i]);
                     break;
                 }
             }

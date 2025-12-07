@@ -17,7 +17,7 @@ public class objective_manager_script : MonoBehaviour
     private string obj4 = "get through thorns wall";
     public bool cleared = false;
 
-    private int currObj = 2;
+    public static int currObj = 1 ;
 
     private static bool obj1Comp = false;
     private static bool obj2Comp = false;
@@ -27,7 +27,7 @@ public class objective_manager_script : MonoBehaviour
     void Start()
     {
        //currObj = 1;
-       
+
     }
 
     // Update is called once per frame
@@ -35,18 +35,19 @@ public class objective_manager_script : MonoBehaviour
     {
 
         if (currObj == 1)
-        {
-            
+        {   
             objective.text = "objective : \n" + obj1+" "+collected+"/2";
             //stuff to complete obj 1
 
             if (Foragingscript.foraged_plants.Contains("purple flower culster") && !collectedPurple)
             {
+                Debug.Log("foraged purple flower unique++");
                 collectedPurple = true;
                 collected++;
             }
             if (Foragingscript.foraged_plants.Contains("red flower cluster") && !collectedRed)
             {
+                Debug.Log("foraged red flower unique++");
                 collectedRed = true;
                 collected++;
             }
