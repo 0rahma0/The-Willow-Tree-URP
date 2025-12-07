@@ -1,3 +1,5 @@
+using System.Collections;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -20,12 +22,20 @@ public class scene_managment_script : MonoBehaviour
     private static bool village_to_lab;
     private static bool forest_to_lab;
     private static bool forest_to_village;
+
+    // first scene entries to control objectives
+    public static bool first_corrupted_forest_entry = false;
+    public static bool first_normal_forest_entry = false;
+    // loadign screen canvas
+    public Canvas loadingScreen;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         // get player rigid body and transform
         rb = GetComponent<Rigidbody>();
         tr = GetComponent<Transform>();
+
+        //loadingScreen.enabled = false;
 
         //-----setting spwan postion and activated booleans to false-----
         if (lab_to_outside)
@@ -71,24 +81,37 @@ public class scene_managment_script : MonoBehaviour
         {
             case "forest_to_lab":
                 forest_to_lab = true;
-                SceneManager.LoadScene("outside lab");
+                Debug.Log("going from forest to ouside lab");
+                //SceneManager.LoadScene("outside lab");
+                StartCoroutine(loadScene("outside lab"));
                 break;
             case "lab_to_forest":
-                SceneManager.LoadScene("forest with river");
+                //SceneManager.LoadScene("forest with river");
+                // to be used by dialogue manager
+                if (!first_normal_forest_entry)
+                    first_normal_forest_entry = true;
+                StartCoroutine(loadScene("forest with river"));
                 break;
             case "lab_to_village":
-                SceneManager.LoadScene("village");
+                //SceneManager.LoadScene("village");
+                StartCoroutine(loadScene("village"));
                 break;
             case "village_to_lab":
                 village_to_lab=true;
-                SceneManager.LoadScene("outside lab");
+                //SceneManager.LoadScene("outside lab");
+                StartCoroutine(loadScene("outside lab"));
                 break;
             case "village_to_forest":
-                SceneManager.LoadScene("corrupted forest");
+                // to be used by dialogue manager
+                if (!first_corrupted_forest_entry)
+                    first_corrupted_forest_entry = true;
+                //SceneManager.LoadScene("corrupted forest");
+                StartCoroutine(loadScene("corrupted forest"));
                 break;
             case "forest_to_village":
                 forest_to_village = true;
-                SceneManager.LoadScene("village");
+                StartCoroutine(loadScene("village"));
+                //SceneManager.LoadScene();
                 break;
             default:
                 break;
@@ -108,6 +131,16 @@ public class scene_managment_script : MonoBehaviour
             
 
         }
+    }
+
+    // loading screen between scenes
+    IEnumerator loadScene(string sceneName)
+    {
+        loadingScreen.enabled = true;
+        yield return new WaitForSeconds(1.5f);
+        SceneManager.LoadScene(sceneName);
+        loadingScreen.enabled = false;
+        
     }
 
 }

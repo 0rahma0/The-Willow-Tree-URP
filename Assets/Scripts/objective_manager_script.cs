@@ -7,6 +7,7 @@ public class objective_manager_script : MonoBehaviour
 {
     public TextMeshProUGUI objective;
 
+    // objectives and booleans that control them
     private string obj1 = "collect 2 unique plants";
     bool collectedRed,collectedPurple = false;
     int collected = 0;
@@ -17,12 +18,9 @@ public class objective_manager_script : MonoBehaviour
     private string obj4 = "get through thorns wall";
     public bool cleared = false;
 
-    public static int currObj = 1 ;
+    public static int currObj = 0 ; //becomes 1 when objectives start
 
-    private static bool obj1Comp = false;
-    private static bool obj2Comp = false;
-    private static bool obj3Comp = false;
-    private static bool obj4Comp = false;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -53,7 +51,7 @@ public class objective_manager_script : MonoBehaviour
             }
             if (collected == 2)
             {
-                obj1Comp = true;
+                //obj1Comp = true;
                 currObj = 2;
                 objective.text = "objective : \n"+obj2;
             }
@@ -64,7 +62,7 @@ public class objective_manager_script : MonoBehaviour
             objective.text = "objective : \n" + obj2 + " " + healed + "/3";
             if (healed == 3)
             {
-                obj2Comp = true;
+                //obj2Comp = true;
                 currObj = 3;
                 objective.text = "objective : \n" + obj3 ;
             }
@@ -79,7 +77,7 @@ public class objective_manager_script : MonoBehaviour
 
             if (explored)
             {
-                obj3Comp = true;
+                //obj3Comp = true;
                 currObj = 4;
                 objective.text = "objective : \n" + obj4;
             }

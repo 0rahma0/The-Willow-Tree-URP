@@ -6,6 +6,7 @@ public class main_menu_manager_script : MonoBehaviour
 {
     public Canvas loadingScreen;
     private Canvas menu;
+    public Canvas controls;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -33,6 +34,15 @@ public class main_menu_manager_script : MonoBehaviour
         loadingScreen.enabled=false;
     }
 
+    public void showControls()
+    {
+        controls.enabled = true;
+    }
+
+    public void hideControls()
+    {
+        controls.enabled = false;
+    }
     public void Quit()
     {
         Application.Quit();

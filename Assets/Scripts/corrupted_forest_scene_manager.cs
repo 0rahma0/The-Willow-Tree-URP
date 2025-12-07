@@ -12,7 +12,7 @@ public class corrupted_forest_scene_manager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        text.text = "hmm... i gotta get past these thorns to explore further";
+        
         dialogue_box.enabled = false;
 
     }
@@ -28,6 +28,7 @@ public class corrupted_forest_scene_manager : MonoBehaviour
         if (nearThorns && first_time && objective_manager_script.currObj == 3)
         {
             dialogue_box.enabled = true;
+            text.text = "hmm... i gotta get past these thorns to explore further";
             objective_manager_script.explored = true;
         }
 
@@ -35,6 +36,19 @@ public class corrupted_forest_scene_manager : MonoBehaviour
         {
             dialogue_box.enabled = false;
             first_time = false;
+        }
+
+        if (scene_managment_script.first_corrupted_forest_entry)
+        {
+            dialogue_box.enabled = true;
+            text.text = "wow..this looks awful..and..interesting.";
+            
+        }
+
+        if (scene_managment_script.first_corrupted_forest_entry && Input.GetKey(KeyCode.Space))
+        {
+            dialogue_box.enabled = false;
+            scene_managment_script.first_corrupted_forest_entry = false;
         }
 
 

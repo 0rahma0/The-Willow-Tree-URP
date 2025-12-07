@@ -5887,6 +5887,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   redflwoers: {fileID: 627683865}
   blueflwoers: {fileID: 963488816}
+  mushrooms: {fileID: 0}
 --- !u!1001 &2136479840
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6205,6 +6206,16 @@ PrefabInstance:
     - target: {fileID: 7722930715419661994, guid: 69b4b1e2a02578c42b5566d7ed994948, type: 3}
       propertyPath: m_Name
       value: player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8534236480674947426, guid: 69b4b1e2a02578c42b5566d7ed994948, type: 3}
+      propertyPath: m_text
+      value: 'click to interact
+
+        1-5 to select items'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8534236480674947426, guid: 69b4b1e2a02578c42b5566d7ed994948, type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 512
       objectReference: {fileID: 0}
     - target: {fileID: 8631063582523691427, guid: 69b4b1e2a02578c42b5566d7ed994948, type: 3}
       propertyPath: speed

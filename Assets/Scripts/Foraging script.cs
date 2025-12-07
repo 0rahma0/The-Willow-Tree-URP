@@ -6,7 +6,7 @@ public class Foragingscript : MonoBehaviour
     // foraging
     private bool isNearForage = false;
     private bool foraging = false;
-    private int pull = 0;
+    private static int pull = 0;
     private int pullGoal = 8;
 
     public static string[] foraged_plants = new string[10];
@@ -41,10 +41,7 @@ public class Foragingscript : MonoBehaviour
             }
             else if (pull == pullGoal)
             {
-                Debug.Log("pulled");
-                anim.SetBool("foraging", false);
-                StartCoroutine(end_forage());
-                foraging = false;
+                
                 
             }
         }
@@ -73,22 +70,39 @@ public class Foragingscript : MonoBehaviour
             if (collider.gameObject.name.EndsWith((")")))
             {
                 cutName = collider.gameObject.name.Substring(0, collider.gameObject.name.Length - 4);
-                Debug.Log(cutName);
             }
+            else
+            {
+                cutName = collider.gameObject.name;
+            }
+            Debug.Log(cutName);
+
+            Debug.Log("pulled");
+            anim.SetBool("foraging", false);
+            StartCoroutine(end_forage());
+            foraging = false;
 
             pull = 0;
+
             Destroy(collider.gameObject);
 
-            for (int i = 0; i < foraged_plants.Length; i++)
-            {
-                if (foraged_plants[i] == null)
-                {
-                    foraged_plants[i] = cutName;
-                    Debug.Log("foraged "+foraged_plants[i]);
-                    break;
-                }
-            }
+            storePlant(cutName);
 
+
+        }
+    }
+
+        public void storePlant(string name)
+        {
+        for (int i = 0; i < foraged_plants.Length; i++)
+        {
+            if (foraged_plants[i] == null)
+            {
+                foraged_plants[i] = name;
+                Debug.Log("foraged " + foraged_plants[i]);
+                break;
+            }
+        }
         }
 
         //if (collider.gameObject.tag == "goop" && UnityEngine.Input.GetKeyDown(KeyCode.E))
@@ -96,7 +110,6 @@ public class Foragingscript : MonoBehaviour
         //    StartCoroutine(heal());
         //}
 
-    }
     private void OnTriggerExit(Collider collider)
     {
         if (collider.gameObject.tag == "forage")
